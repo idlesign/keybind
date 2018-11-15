@@ -60,5 +60,4 @@ From CLI
 
     ; All keys interception mode. Show keycodes.
     ; Use wisely, keep your mouse ready.
-    $ keybind
-
+    $ keybind --sniff
