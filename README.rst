@@ -22,9 +22,9 @@ Can be used both as a Python package and from CLI.
 
 Features:
 
-    * Create some global key bindings to your functions.
-    * Use them in your GUI or CLI application.
-    * Bind arbitrary program run to a key using CLI.
+  * Create some global key bindings to your functions.
+  * Use them in your GUI or CLI application.
+  * Bind arbitrary program run to a key using CLI.
 
 
 From Python
