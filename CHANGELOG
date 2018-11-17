@@ -2,6 +2,11 @@ keybind changelog
 =================
 
 
+Unreleased
+----------
++ CLI. '-k' now accepts integer keycodes.
+
+
 v0.1.1
 ------
 * CLI. Sniffing made less error prone.

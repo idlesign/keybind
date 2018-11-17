@@ -54,9 +54,9 @@ From CLI
 
 .. code-block:: bash
 
-    ; Listen to Ctrl-K and Ctrl-D.
+    ; Listen to Ctrl-K, Ctrl-R and D (keycode 40).
     ; Provide as many -k as you want.
-    $ keybind -k "Ctrl-K=ls -lah" -k "Ctrl-D=python run.py somearg --someopt"
+    $ keybind -k "Ctrl-K=ls -lah" -k "Ctrl-R=python run.py somearg --someopt" -k "40=date"
 
     ; All keys interception mode. Show keycodes.
     ; Use wisely, keep your mouse ready.

@@ -37,6 +37,10 @@ def main():
 
         for rule in keys:
             key, _, cmd = rule[0].partition('=')
+
+            if key.isdigit():
+                key = int(key)
+
             keymap[key] = partial(run, what=cmd) if cmd else None
 
         KeyBinder.activate(keymap)
