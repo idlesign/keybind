@@ -2,8 +2,8 @@ keybind changelog
 =================
 
 
-Unreleased
-----------
+v0.2.0
+------
 + CLI. '-k' now accepts integer keycodes.
 
 
