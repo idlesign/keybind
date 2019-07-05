@@ -32,7 +32,7 @@ From Python
 
 .. code-block:: python
 
-    from keybinder import KeyBinder
+    from keybind import KeyBinder
 
 
     def do():
