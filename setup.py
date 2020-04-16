@@ -35,7 +35,7 @@ setup(
     author='Igor `idle sign` Starikov',
     author_email='idlesign@yandex.ru',
 
-    packages=find_packages(),
+    packages=find_packages(exclude=['tests']),
     include_package_data=True,
     zip_safe=False,
 
@@ -50,7 +50,10 @@ setup(
 
     test_suite='tests',
 
-    tests_require = ['pytest'],
+    tests_require=[
+        'pytest',
+        'pytest-stub',
+    ],
 
     classifiers=[
         # As in https://pypi.python.org/pypi?:action=list_classifiers
@@ -63,6 +66,8 @@ setup(
         'Programming Language :: Python :: 3.4',
         'Programming Language :: Python :: 3.5',
         'Programming Language :: Python :: 3.6',
+        'Programming Language :: Python :: 3.7',
+        'Programming Language :: Python :: 3.8',
         'License :: OSI Approved :: BSD License'
     ],
 )

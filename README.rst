@@ -2,13 +2,19 @@ keybind
 =======
 https://github.com/idlesign/keybind
 
-|release| |lic|
+|release| |lic| |ci| |coverage|
 
 .. |release| image:: https://img.shields.io/pypi/v/keybind.svg
     :target: https://pypi.python.org/pypi/keybind
 
 .. |lic| image:: https://img.shields.io/pypi/l/keybind.svg
     :target: https://pypi.python.org/pypi/keybind
+
+.. |ci| image:: https://img.shields.io/travis/idlesign/keybind/master.svg
+    :target: https://travis-ci.org/idlesign/keybind
+
+.. |coverage| image:: https://img.shields.io/coveralls/idlesign/keybind/master.svg
+    :target: https://coveralls.io/r/idlesign/keybind
 
 
 Description

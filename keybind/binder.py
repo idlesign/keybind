@@ -201,6 +201,6 @@ class KeyBinder(object):
                 LOGGER.warning('Unable to register handler for: %s', key)
 
     def sniff(self):
-        """Grab all events. Usefull for keycode sniffing."""
+        """Grab all events. Useful for keycode sniffing."""
         x = self.x
         self.screen.grab_keyboard(self.events, x.GrabModeAsync, x.GrabModeAsync, x.CurrentTime)
