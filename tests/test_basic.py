@@ -40,3 +40,38 @@ def test_thread(xlib_mock):
     KeyBinder.activate({
         'J': lambda: None,
     }, run_thread=True)
+
+
+@pytest.mark.parametrize("key_input, expected_result",
+        [
+            ("J", ([], "J")),
+            ("Ctrl-J", (["Ctrl"], "J")),
+            ("Ctrl-Alt-J", (["Ctrl", "Alt"], "J")),
+            ("", ([], "")),
+        ]
+    )
+def test_parse_key_valid_input(key_input, expected_result, xlib_mock):
+    # GIVEN valid input describing a key or key combination
+
+    # WHEN the input is parsed
+    binder = KeyBinder()
+
+    # THEN the expected result is returned
+    assert binder._parse_key(key_input) ==  expected_result
+
+
+def test_parse_key_invalid_input(xlib_mock):
+    # GIVEN a list of valid input types and input that is not one of those
+    valid_input_types = [str, int]
+
+    invalid_input = ["Ctrl", "J"]
+
+    assert type(invalid_input) not in valid_input_types
+
+    # WHEN the input gets parsed
+    binder = KeyBinder()
+
+    # THEN a TypeError is raised
+    with pytest.raises(TypeError):
+        binder._parse_key(invalid_input)
+

@@ -152,15 +152,7 @@ class KeyBinder(object):
 
         modifier_alias = None
 
-        if isinstance(key, int):
-            keycode = key
-
-        else:
-            *modifiers, key_only = key.split('-')
-
-            keycode = self.disp.keysym_to_keycode(self.xk.string_to_keysym(key_only))
-
-            LOGGER.debug('Key translated: %s -> %s', key, keycode)
+        modifiers, keycode = self._parse_key(key)
 
         def on_error(err, event):
             has_error.append((err, event))
@@ -202,3 +194,19 @@ class KeyBinder(object):
         """Grab all events. Useful for keycode sniffing."""
         x = self.x
         self.screen.grab_keyboard(self.events, x.GrabModeAsync, x.GrabModeAsync, x.CurrentTime)
+
+    def _parse_key(self, key):
+        if isinstance(key, int):
+            return [], key
+
+        elif isinstance(key, str):
+            *modifiers, key_only = key.split('-')
+
+            keycode = self.disp.keysym_to_keycode(self.xk.string_to_keysym(key_only))
+
+            LOGGER.debug('Key translated: %s -> %s', key, keycode)
+
+            return modifiers, keycode
+        else:
+            raise TypeError("Given key must be a key code (int), or a shortcut (str), e. g. 'Ctrl-K.")
+
