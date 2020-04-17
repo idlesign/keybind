@@ -5,6 +5,7 @@ keybind changelog
 Unreleased
 ----------
 + Added support for multiple key-modifiers.
+* Dropped QA for Python 2.
 
 
 v0.2.0
