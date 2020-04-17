@@ -2,8 +2,8 @@ keybind changelog
 =================
 
 
-Unreleased
-----------
+v0.3.0 [2020-04-17]
+-------------------
 + Added support for multiple key-modifiers.
 * Dropped QA for Python 2.
 
