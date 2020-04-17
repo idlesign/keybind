@@ -2,6 +2,11 @@ keybind changelog
 =================
 
 
+Unreleased
+----------
++ Added support for multiple key-modifiers.
+
+
 v0.2.0
 ------
 + CLI. '-k' now accepts integer keycodes.
