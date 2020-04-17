@@ -139,7 +139,7 @@ class KeyBinder(object):
         """
         x = self.x
 
-        modifiers = {
+        modifiers_map = {
             'Ctrl': x.ControlMask,   # 37  105
             'Shift': x.ShiftMask,    # 50  62
             'CapsLock': x.LockMask,  # 66
@@ -152,33 +152,23 @@ class KeyBinder(object):
 
         modifier_alias = None
 
-        if isinstance(key, int):
-            keycode = key
-
-        else:
-            modifier_alias, _, key_only = key.partition('-')
-
-            if not key_only:
-                # Key only, no modifier.
-                key_only = modifier_alias
-                modifier_alias = None
-
-            keycode = self.disp.keysym_to_keycode(self.xk.string_to_keysym(key_only))
-
-            LOGGER.debug('Key translated: %s -> %s', key, keycode)
+        modifiers, keycode = self._parse_key(key)
 
         def on_error(err, event):
             has_error.append((err, event))
 
         modifier_alias = modifier_alias or modifier_default
-        modifier = modifiers[modifier_alias]
+        modifier_mask = 0
+
+        for modifier in modifiers:
+            modifier_mask |= modifiers_map[modifier]
 
         # Simulate X.AnyModifier as it leads to BadAccess, as if somebody has already grabbed it before us.
         modifiers_all = [
-            modifier,
-            modifier | modifiers['NumLock'],
-            modifier | modifiers['CapsLock'],
-            modifier | modifiers['NumLock'] | modifiers['CapsLock'],
+            modifier_mask,
+            modifier_mask | modifiers_map['NumLock'],
+            modifier_mask | modifiers_map['CapsLock'],
+            modifier_mask | modifiers_map['NumLock'] | modifiers_map['CapsLock'],
         ]
 
         for mod in modifiers_all:
@@ -204,3 +194,19 @@ class KeyBinder(object):
         """Grab all events. Useful for keycode sniffing."""
         x = self.x
         self.screen.grab_keyboard(self.events, x.GrabModeAsync, x.GrabModeAsync, x.CurrentTime)
+
+    def _parse_key(self, key):
+        if isinstance(key, int):
+            return [], key
+
+        elif isinstance(key, str):
+            *modifiers, key_only = key.split('-')
+
+            keycode = self.disp.keysym_to_keycode(self.xk.string_to_keysym(key_only))
+
+            LOGGER.debug('Key translated: %s -> %s', key, keycode)
+
+            return modifiers, keycode
+        else:
+            raise TypeError("Given key must be a key code (int), or a shortcut (str), e. g. 'Ctrl-K.")
+
