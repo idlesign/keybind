@@ -1,5 +1,3 @@
-# -*- encoding: utf-8 -*-
-from __future__ import unicode_literals
 
 import logging
 import threading
@@ -19,7 +17,7 @@ def configure_logging(log_level=None):
     logging.basicConfig(format='%(levelname)s: %(message)s', level=log_level or logging.INFO)
 
 
-class KeyBinder(object):
+class KeyBinder:
     """Binds keys to functions globally.
 
         .. code-block:: python
@@ -183,8 +181,6 @@ class KeyBinder(object):
 
     def register_keys(self):
         """Registers all keys from current keymap."""
-
-        # screen.change_attributes(event_mask=capture_events)
 
         for key in self.keymap.keys():
             if not self.register_key(key):

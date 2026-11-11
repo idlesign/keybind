@@ -42,7 +42,7 @@ def test_thread(xlib_mock):
     }, run_thread=True)
 
 
-@pytest.mark.parametrize("key_input, expected_result",
+@pytest.mark.parametrize(("key_input", "expected_result"),
         [
             ("J", ([], "J")),
             ("Ctrl-J", (["Ctrl"], "J")),

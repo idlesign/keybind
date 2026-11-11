@@ -1,4 +1,5 @@
-from collections import namedtuple, deque
+from collections import deque
+from typing import NamedTuple
 
 import pytest
 
@@ -44,7 +45,9 @@ def xlib_mock(stub):
         def grab_keyboard(self, events, asy1, asy2, time):
             return
 
-    Event = namedtuple('Event', ['type', 'detail'])
+    class Event(NamedTuple):
+        type: str
+        detail: str
 
     class Display:
 

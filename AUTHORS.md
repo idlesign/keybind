@@ -1,18 +1,7 @@
-keybind authors
-===============
+# keybind authors
 
 Created by Igor `idle sign` Starikov.
 
+## Contributors
 
-Contributors
-------------
-
-Michael Nix <https://github.com/mchlnix>
-
-
-
-Translators
------------
-
-Here could be your name.
-
+* Michael Nix <https://github.com/mchlnix>

@@ -1,16 +1,15 @@
-#!/usr/bin/env python
 import argparse
 import logging
 from functools import partial
 from subprocess import Popen
 
-from keybind import VERSION_STR, KeyBinder, configure_logging
+from keybind import VERSION, KeyBinder, configure_logging
 
 
 def main():
 
     arg_parser = argparse.ArgumentParser(prog='keybind', description='Global key binding made easy')
-    arg_parser.add_argument('--version', action='version', version=VERSION_STR)
+    arg_parser.add_argument('--version', action='version', version=VERSION)
 
     arg_parser.add_argument('-k', nargs='*', help='Binding rule. "KEY=program"', action='append')
     arg_parser.add_argument(
