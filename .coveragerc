@@ -1,3 +1,0 @@
-[run]
-include = keybind/*
-omit = keybind/cli.py
